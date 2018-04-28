@@ -1,0 +1,42 @@
+OVERVIEW
+Linear statistical models have a univariate response modeled as a linear function of predictor variables and a zero mean random error term. The assumption of linearity is a critical (and limiting) characteristic. Generalized linear models (GLMs) relax this assumption of linearity. They permit the expected value of the response variable to be a smoothed (e.g. non-linear) monotonic function of the linear predictors. GLMs also relax the assumption that the response variable is normally distributed by allowing for many distributions (e.g. normal, poisson, binomial, log-linear, etc.). Generalized additive models (GAMs) are extensions of GLMs. GAMs allow for the estimation of regression coefficients that take the form of non-parametric smoothers. Nonparametric smoothers like lowess (locally weighted scatterplot smoothing) fit a smooth curve to data using localized subsets of the data.
+
+I think the main difference between GLM and GAM is that with a GLM you take the entire additive linear model then wrap a non-linear function around it, whereas with a GAM you replace each linear component B*x with a non-linear function f(x)
+
+
+
+GLM - 1970s
+entire class of statistical learning models that include both linear and logistic regression as special cases
+The term generalized linear model (GLIM or GLM) refers to a larger class of models popularized by McCullagh and Nelder. In these models, the response variable yi is assumed to follow an exponential family distribution with mean μi, which is assumed to be some (often nonlinear) function of xTiβ. Some would call these “nonlinear” because  μi is often a nonlinear function of the covariates, but McCullagh and Nelder consider them to be linear, because the covariates affect the distribution of yi only through the linear combination xTiβ.
+
+three elements:
+1. A probability distribution from the exponential family, e.g. normal, binomial, poisson, gamma, etc. 
+2. A linear predictor eta = XB
+3. a link function g such that E(Y) = mu = g^-1(eta)
+
+E(Y)  = mu = g^-1(XB)
+XB is the linear predictor 
+g is the link function
+
+We use link functions to deal with responses which have error distribution models other than normal
+
+Can solve GLM with iteratively reweighted least squares for maximum likelihood estimation of model parameters
+can also solve with bayesian approaches and least squares fits to variance stabilized responses
+
+
+
+GAM - 1986
+very simple really - 
+B*x's get replaced with f(x)'s 
+f()'s can be parametric or non-parametric (or semi-parametric)
+a natural way to extend the multiple linear regression model in order to allow for non-linear relationships between each feature and the response 
+a class of non-linear extensions to generalized linear models
+extend linear model to allow for certain non-linear relationships
+more flexible than linear regression
+less interpretable since relationship between each predictor and response is now modeled using a curve
+replace each linear component Bx with a smooth non-linear link function f(x)
+
+
+original GAM fitting method estimated smooth components of model using non-parametric smoothers via the backfitting algorithm- iterative smoothing of partial residuals
+
+

@@ -1,0 +1,334 @@
+Want to also include:
+	sampling
+	normal dist
+
+Z-score of sample mean
+
+
+Z = (sample mean - null value) / SE
+=======================================================================================
+
+Ch.1 Introduction to Data
+
+data collected in haphazard fashion are called ANECDOTAL EVIDENCE
+Sampling from a population
+	sampling randomly helps reduce bias
+	SIMPLE RANDOM SAMPLE - like using a raffle
+		be careful on NON-RESPONSE BIAS which can skew results and make it unclear whether they are
+			representative of the entire population
+		also watch out for a CONVENIENCE SAMPLE, where individuals who are easily accessible are more likely to
+			be included
+		Several efficient algorithms for simple random sampling have been develope
+			A very simple random sort algorithm was proved by Sunter in 1977 which simply assigns a random 
+				number drawn from uniform distribution (0, 1) as key to each item, sorts all items using 
+				the key and selects the smallest k items.
+			J. Vitter in 1985 proposed reservoir sampling algorithm which is often widely used. This algorithm 
+				does not require advance knowledge of n and uses constant space.
+	Explanatory variable (x) ---> Response variable (y)
+		labels to keep track of which variable we think affects the other
+		This does not mean variables are causal, even if there is an association identified between them
+Observational study
+	collect dat ain a way that does not directly interfere with how the data arose
+	can provide evidence of a naturally occurring association between variables, but cannot by themselves
+		show a causal connection
+Experiment
+	to investigate the possibility of a causal connection a randomized experiment is required
+	randomized experiment - randomly assigned groups
+Observational studies
+	CONFOUNDING VARIABLE - variable that is correlated with both the explanatory and response variables
+	ex. more sunscreen someone uses,  the more likely a person is to havr skin cancer
+		does this mean sunscreen causes skin cancer?
+		No, sun exposure is the confounding variable
+	one method to justify making causal conclusions from observational studies is to exhaust the search for 
+		confounding variables, but no guarantee that all can be examined or measured
+	Observational studies come in two forms: prospective and retrospective
+	PROSPECTIVE STUDY identifies individuals and collects information as events unfold
+	RETROSPECTIVE STUDY collect data after events have taken place (ex. reviewing medical records)
+Sampling methods
+	simple random sampling - covered above
+	STRATIFIED SAMPLING - divide and conquer method - population divided into groups called STRATA
+		strata are chosen so that similar casres are grouped together
+		then a second sampling method, usually simple random sampling, is employed within each stratum
+	useful when cases in each stratum are very similar with respect to the outcome of interest
+	CLUSTER SAMPLE - break population into groups called CLUSTERS, 
+		then sample a fixed number of clusters and include all observations from each of those clusters in the sample
+	MULTISTAGE SAMPLE - like a cluster sample, but rather than keeping all observations in each cluster,
+		collect a random sample within each selected cluster
+		cluster or multistage sampling can sometimes be more economical than alternative sampling techniques
+		they're useful when 	there is a lot of case-to-case variability within a cluster but the clusters themselves
+			don't look very different from one another. ex. neighborhoods, then cluster or multistage would
+				work best when neighborhoods are very diverse
+Principles of experimental design
+	Controlling - do best to control any other differences in the groups
+	Randomization - randomize patients into treatment groups
+	Replication - in a single study, we replicate by collecting a sufficiently large sample
+	Blocking - when suspecting that variables other than treatment influence the response, 
+		first group individuals based on this variable into blocks and then randomize cases within each block to 
+			the treatment groups
+		ex. Patients --split--> low-risk/high-risk --each-randomly-split--> control/treatment
+Dot plot
+	one-variable scatter plot
+Tails and skew
+	ex. long right tail => right skewed
+unimodal, bimodal, multimodal
+	number of prominent peaks in distribution
+Box plots
+	bar is the median, edges are the first and third quartiles (25% and 75%)
+		so the box represents the middle 50% of the data
+	whiskers attempt to capture the data outside of the box, however, their reach is never alowed to be
+		more than 1.5 x IQR (interquartile range)		
+		purpose is to show outliers (dots outside whiskers)
+Robust statistics
+	ex. median and IQR are robust estimates because extreme observations have little effect on their values
+	mean and std are much more affected by changes in extreme observations
+Transforming data
+	can help reduce skew and outliers, and/or straighten a nonlinear relationship, among other things
+Categorical data
+	Segmented bar plot - graphical display of contingency table information
+	Mosaic plot - similar to bar plot or segmented bar plot, uses areas to represent the number of obervations
+Checking for independence
+
+=======================================================================================
+	
+Skip Ch.2 (on probability theory, have better notes elsewhere)
+		
+=======================================================================================
+
+Ch.3 Distributions of Random Variables
+
+Z-score - number of stds above or below the mean that an observation falls
+68-95-99.7 rule (1,2,3 stds)
+Normal probability plot - evaluate the normal approximation
+Lists some different distributions (better notes from probability course)
+Normal approximation to the binomial distribution - binomial dist cumbersome when sample size is large,
+	in some cases can use the normal distribution as an easier and faster way to estimate binomial probabilities
+	mu = n*p
+	sigma = sqrt(n*p(1-p))
+	normal approximation breaks down on small intervals (small range of counts) even when conditions are met
+	Improving approximation by modifying cutoff values
+Some more discrete distributions	
+	
+=======================================================================================
+
+Ch.4 Foundations for Inference p.168
+
+Point Estimates
+	SAMPLE MEAN $(\bar x$) is a POINT ESTIMATE of the POPULATION MEAN ($\mu$)
+	POPULATION STANDARD DEVIATION ($\sigma$) 
+	SAMPLE STANDARD DEVIATION ($s$)
+Sampling Distribution 	
+	represents the distribution of the point estimates based on samples of a fixed size from a certain population
+	STANDARD ERROR (SE) is the standard deviation associated with an estimate (from sampling distribution)
+		Tells how far a typical estimate is away from the actual population parameter
+	SE = $\frac{\sigma}{\sqrt{n}}$	
+	A reliable method to ensure sample observationependent is t conduct a simple random sample consisting of 
+		less than 10% of the population		
+Confidence Intervals
+	A plausible range of values for the population parameter
+	If we report a point estimate, we probably will not hit the exact population parameter
+	On the other hand, if we report a range of plausible values - a confidence interval - we have a good shot
+		at capturing the parameter
+	95% confident that the true parameter is captured in the confidence interval:
+		point estimate +- 1.96 x SE
+		99% interval: 2.58
+		in general: point estimate +- z*SE		
+		z*SE is the MARGIN OF ERROR		
+	Normal approximation is crucial to precision of confidence intervals
+	When normal model can safetly be applied:
+		- sample observations are independent
+			simple sandom sample of less than 10% of population => independent
+			random assignment to treatment groups in experiment => independent
+			seemingly random process => difficult, use best judgement
+		- sample size is large: n >= 30 (rule of thumb)
+		- population distribution is not strongly skewed (larger sample => more lenient about skew)
+			usually means checking for outliers - prominent outliers => 100+ sample size
+Hypothesis Testing
+	NULL HYPOTHESIS (H_0) represents either a skeptical perspective or a claim to be tested
+	ALTERNATIVE HYPOTHESIS (H_A) represents an alternative claim under consideration and is often represented
+		by a range of possible parameter values
+	Do not reject null hypothesis unless evidence in favor of alternative hypothesis is so strong that must reject
+		H_0 in favor of H_A
+	 Can test hypotheses using confidence intervals
+	 You do not accept the null hypothesis, you just FAIL TO REJECT it
+	TYPE 1 ERROR: rejecting H_0 when it is actually true
+	TYPE 2 ERROR: failing to reject H_0 when H_A is true	
+	SIGNIFICANCE LEVEL (alpha) typical value is 0.05 
+		Don't want to incorrectly reject H_0 more ethan 5% of the time
+P-Values
+	probability of observing data at least as favorable to the alternative hypothesis, if null hypothesis is true
+	Formal testing of hypotheses using p-values
+	Smaller the p-value stronger the data H_A over H_0
+	Typical significance level is 0.05 
+	useful to draw picture to find p-value
+	ONE-SIDED HYPOTHESIS TEST  > or <
+	TWO-SIDED HYPOTHESIS TEST !=	
+	Type 1 error dangerous? choose small significance level
+	Type 2 error dangerous? chose larger significance level
+	usually use two-sided
+	Can't switch from two-sided to one-sided test after observing the data - inflates Type 1 Error Rate
+	Z = (sample mean - null value) / SE
+	Then look at normal probability table
+	two-sided => p-value = left tail + right tail or left tail * 2
+Central Limit Theorem
+		The distribution of the sample mean is approximately normal regardless of population distribution
+		normal model becomes more reasonable as sample size increases
+Interence for other estimators
+	a point estimate is UNBIASED if the sampling distribution of the estimate is centered at the parameter it estimates
+			sample mean is an example of an unbiased point estimate
+Hypothesis Testing for nearly normal point estimates
+	- Write hypothesis in plain language then set up mathematical notation
+	- Identify an appropriate point estimate of the parameter of interest
+	- Verify conditions to ensure the standard error estimate is reasonable and the point estimate is nearly normal 
+		and unbiased
+	- Compute the standard error. Draw a picture depicting the distrubtion of the estimate under the idea that 
+		H_0 is true. 
+		Shade areas representing the p-value.
+	- Use picture and normal model to compute the test statistic (Z-score) and identify p-value to evaluate the hypothesis
+	TEST STATISTIC is a summary statistic that is useful for evaluating a hypothesis test of identifying the p-value
+		when a point estimate is nearly normal, we use the Z-score of the point estimate as the test statistic
+	Statistically significant is not the same as practically significant
+	
+=======================================================================================
+	
+Ch.5 Inference for Numerical Data p.219
+
+Central limit theorem for normal data
+	Sampling distribution of the mean is nearly normal when sample observations are independent and
+	come from a nearly normal distribution. True for any sample size
+T-distribution
+	single parameter: degrees of freedom (df), describes the precise form of the bell-shaped t-distribution
+	Larger df more closely approximates the norml model
+	check two conditions:
+		independence of observations
+		observations come from a nearly normal distribution
+	Use t-distributoon for interence of the sample mean when the observations are independent and nearly normal
+	Max relax normality condition as sample size increases
+		Moderate skew is ok when sample size is at least 30
+	degrees of freedom = n - 1	 (for examining a single mean)
+t-confidence interval
+	sample mean +- t_df * SE	
+	test statistic for t-distribution is called T-score
+Paired observations
+	ex. book prices in data sets from two different stores
+	useful to look at the difference between the paired observations
+	Can calculate summary statistics for differences and then set up hypothesis test
+Difference of two means
+	ex. is there convincing evidence that mothers who smoke have newborns with different average birth weight than
+		mothers who don't smoke?
+	point estimate of difference in sample means: \bar x_1 - \bar x_2
+	to use t-dist for inference when working with standardized diff of two means, must check that
+		each sample meets conditions for using the t-distribution
+		samples are independent
+SE of difference of two means point estimate
+	sqrt(std_1^2/n_1 + 	std_2^2/n_2)
+	called Welch's t-test
+	degrees of freedom calculated with software or the smaller of n_1 - 1 vs. n_2 - 1
+Pooled standard deviation estimate
+	a way to use data from both samples to better estimate the std and SE
+	if good reasons to believe population stds are equal, can obtain improved estimate of group variances by 
+		pooling their data
+	s^2_pooled = (s_1^2 x (n_1 - 1) + s_2^2 x (n_2 - 1)) / (n_1 + n_2 - 2)
+	df = n_1 + n_2 - 2
+Power calculations for a difference of means
+	two competing considerations in experiment planning:
+	1. want to collect enough data to detect important effects	
+	2. collecting data can be expensive, sometimes risky
+	POWER - probability of how likely we are to detect an effect we care about
+		can compute it for different sample sizes or different EFFECT SIZES
+	use Z-score
+Determining a proper sample size
+	p.244
+ANOVA
+	analysis of variance
+	comparing many means across groups (instead of pairwise comparisons)
+	Answers: is the variability in the sample means so large that it seems unlikely to be from chance alone?
+	test statistic - F
+	ANOVA uses a single hypothesis test to check whether means across many groups are equal
+	three conditions to check for anova analysis:
+		independence - always important 
+		approximately normal - important when sample sizes for each group are relatively small
+		constant variance - important when sample sizes differ between groups
+	other ideas in this section:
+		data snooping/ishing
+		prosecutor's fallacy - At its heart, the fallacy involves assuming that the prior probability of a random match 
+		is equal to the probability that the defendant is guilty. For instance, if a perpetrator is known to have the same
+		 blood type as a defendant and 10% of the population share that blood type, then to argue on that basis alone
+		 that the probability of the defendant being guilty is 90% makes the prosecutor's fallacy (in a very simple 
+		form).
+	mean square between groups (MSG) - scaled variance formula for means (variability between groups in anova)
+		degrees of freedom = k - 1, where there are k groups
+		typically use software to compute: SSG (sum of squares between groups) / df
+	MSG - mean square between grps = SGG / df
+	SSG - sum of squares between groups = SST - SSE
+	SSE - sum of squared errors = MSE * df
+	MSE - mean squared error = SSE / df
+	SST - sum of squares total = sum(x-barx)^2
+F statistic and F test
+	ANOVA uses test statistic F, standardized ratio of variability in sample means relative to variability within the groups
+	common to use software to calculate F statistic and p-value
+	When we reject null hypothesis in ANOVA, how to tell which of these groups has different means?
+		compare means of each possible pair of groups - two-sample t-test with modified significance level
+			and pooled estimate of the standard deviation across groups (usually found in ANOVA table)
+Multiple comparisons and Bonferroni correction for alpha
+	scenario of testing many pairs of groups is called MULTIPLE COMPARISONS
+	Bonferroni correcton suggests that a more stringent significance level is more appropriate for these tests:
+		alpha_star = alpha / K, where K is the number of comparisons being considered => K = k(k-1) / 2
+			(same as k choose 2)
+						
+=======================================================================================
+		
+Ch.6 Inference for Categorical Data p.274
+
+Identifying when the sample proportion is nearly normal
+	sample proportion (p hat) can be described as a sample mean (regular p is population proportion)
+		if success is 1 and failure is 0, sample proportion is the mean of these outcomes
+	conditions for sampling distribution of sample proportion being nearly normal
+		1. sample observations independent				
+		2. at least 10 successes and 10 failures in our sample (called the SUCCESS-FAILURE CONDITION)
+		then, SE_sample_proportion = sqrt(p(1-p) / n)
+		typically we don't know p, so we substitute some value to check conditions and to estimate the SE
+		for confidence intervals, usually sample proportio is used to check success-failure condition and compute SE
+		for hypothesis tests typically the null value is used in place of p
+Choosing a sample size when estimation a proportion
+make sure margin of error (thing added and subtracted to point estimate in a confidence interval) is sufficiently
+	small that the sample is useful
+	task is to find a sample size n so that the sample proportion is within some margin of error m of the actual proportion
+		with a certain level of confidence
+	magin of error for sample proportion is z_star * SE_sample_proportion < m
+	then solve for n
+Difference of two proportions
+	Sample distribution of difference of two proportions
+		conditions:
+			each proportion follows normal model
+			the two samples are independent
+			SE = sqrt(SE_p1^2 + SE_p2^2)
+Chi-Square statistical test
+	Testing for goodness of fit
+	binned data
+	ex. given a sample of cases that can be classified into several groups, determine if the sample is representative
+		of the general population
+	ex. evaluate whether data resemble a particular distribution, such as a normal distribution or geometric distribution
+	 test statistic is \Chi^2 (chi_square, looks like a wavy X)
+	X^2 = sum of ( (observed count - null count)^2 / null count ) for each category or group
+	chi-square distribution has just one parameter: degees of freedom
+	chi-square distribution is sometimes uses to characterize data sets and statistics that are always positive and
+		typically right skewed
+	uses chi-square table
+	conditions for chi-square test:
+		independence
+		each particular scenario must have at least 5 expected cases
+Testing for independence in two-way tables
+	can apply chi-square tests to two-way tables
+	degrees of freedom and expected counts are computed a little differently p.298
+Small sample hypothesis testing for a proportion
+	generating the null distribution and p-value by simulation
+	generating the exact null distribution and p-value
+	Using simulation for goodness of fit tests
+	Randomization test	
+		Large sample framework for a difference in two proportions
+		Simulating a difference under the null distribution
+		Null distribution for the difference in two proportions
+
+=======================================================================================
+
+Ch.7/8 summaries not needed, just on linear and logistic regression

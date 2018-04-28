@@ -1,0 +1,36 @@
+Conda cheatsheet in resources/cheatsheets
+
+show outdated packages:
+	conda search --outdated
+
+update conda:
+	conda update conda
+
+update conda packages:
+	conda update --all
+	
+list environments:
+	conda env list
+	
+list all packages and versions in active environment:
+	conda list	
+
+create a new environment:
+	conda create -n py27 python=2.7 anaconda
+
+Install a package directly from PyPI into the current active environment using pip:
+	pip install [package]	
+
+show python info for current active Python:
+	python --version
+	
+Show the locations of all versions of Python that are currently in the path:
+	which -a python	
+	
+switch to new environment with different python version:
+	source activate py27
+		
+deactivate environment:
+	source deactivate py27		
+	
+	

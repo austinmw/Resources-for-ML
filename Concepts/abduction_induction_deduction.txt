@@ -1,0 +1,16 @@
+
+
+DEDUCTION:  Rule, Case, Result  (general to specific)
+Rule: All the beans from this bag are white
+Case: These beans are from this bag
+Result: These beans are white
+
+ABDUCTION: Result, Rule, Case (inference to best explanation, establishing a connection)
+Result: These beans are white
+Rule: All the beans from this bag are white
+Case: These beans are from this bag
+
+INDUCTION: Case, Result, Rule (Instance to general)
+Case: These beans are from this bag
+Result: These beans are white
+Rule: All beans from this bag are white
